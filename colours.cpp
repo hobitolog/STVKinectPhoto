@@ -37,6 +37,7 @@ CColorBasics::CColorBasics() :
     m_fFreq(0),
     m_nNextStatusTime(0LL),
     m_bSaveScreenshot(false),
+	m_bDoSomething(false),
     m_pKinectSensor(NULL),
     m_pColorFrameReader(NULL),
     m_pD2DFactory(NULL),
@@ -98,7 +99,7 @@ int CColorBasics::Run(HINSTANCE hInstance, int nCmdShow)
     WNDCLASS  wc;
 
     // Dialog custom window class
-    ZeroMemory(&wc, sizeof(wc));
+    ZeroMemory(&wc, sizeof(wc)); //fills memory allocated by window with 0s before creating window, it seems
     wc.style         = CS_HREDRAW | CS_VREDRAW;
     wc.cbWndExtra    = DLGWINDOWEXTRA;
     wc.hCursor       = LoadCursorW(NULL, IDC_ARROW);
@@ -271,7 +272,7 @@ LRESULT CALLBACK CColorBasics::DlgProc(HWND hWnd, UINT message, WPARAM wParam, L
             // Init Direct2D
             D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, &m_pD2DFactory);
 
-            // Create and initialize a new Direct2D image renderer (take a look at ImageRenderer.h)
+            // Create and initialize a new Direct2D image renderer (ImageRenderer.h)
             // We'll use this to draw the data we receive from the Kinect to the screen
             m_pDrawColor = new ImageRenderer();
             HRESULT hr = m_pDrawColor->Initialize(GetDlgItem(m_hWnd, IDC_VIDEOVIEW), m_pD2DFactory, cColorWidth, cColorHeight, cColorWidth * sizeof(RGBQUAD)); 
@@ -303,6 +304,10 @@ LRESULT CALLBACK CColorBasics::DlgProc(HWND hWnd, UINT message, WPARAM wParam, L
                 m_bSaveScreenshot = true;
             }
             break;
+			if (IDC_BUTTON_TRIAL == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
+			{
+				m_bDoSomething = true;
+			}
     }
 
     return FALSE;
@@ -381,7 +386,7 @@ void CColorBasics::ProcessColor(INT64 nTime, RGBQUAD* pBuffer, int nWidth, int n
                 }
             }
         }
-
+		/*
         WCHAR szStatusMessage[64];
         StringCchPrintf(szStatusMessage, _countof(szStatusMessage), L" FPS = %0.2f    Time = %I64d", fps, (nTime - m_nStartTime));
 
@@ -389,7 +394,7 @@ void CColorBasics::ProcessColor(INT64 nTime, RGBQUAD* pBuffer, int nWidth, int n
         {
             m_nLastCounter = qpcNow.QuadPart;
             m_nFramesSinceUpdate = 0;
-        }
+        }*/
     }
 
     // Make sure we've received valid data
@@ -543,4 +548,6 @@ HRESULT CColorBasics::SaveBitmapToFile(BYTE* pBitmapBits, LONG lWidth, LONG lHei
     // Close the file
     CloseHandle(hFile);
     return S_OK;
+
+
 }

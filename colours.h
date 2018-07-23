@@ -55,6 +55,7 @@ private:
     INT64                   m_nNextStatusTime;
     DWORD                   m_nFramesSinceUpdate;
     bool                    m_bSaveScreenshot;
+	bool m_bDoSomething;
 
     // Current Kinect
     IKinectSensor*          m_pKinectSensor;
@@ -77,14 +78,14 @@ private:
     /// </summary>
     /// <returns>S_OK on success, otherwise failure code</returns>
     HRESULT                 InitializeDefaultSensor();
-
+	/*
     /// <summary>
     /// Handle new color data
     /// <param name="nTime">timestamp of frame</param>
     /// <param name="pBuffer">pointer to frame data</param>
     /// <param name="nWidth">width (in pixels) of input image data</param>
     /// <param name="nHeight">height (in pixels) of input image data</param>
-    /// </summary>
+    /// </summary>*/
     void                    ProcessColor(INT64 nTime, RGBQUAD* pBuffer, int nWidth, int nHeight);
 
     /// <summary>

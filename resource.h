@@ -6,7 +6,8 @@
 #define IDD_APP                         100
 #define IDC_VIDEOVIEW                   1000
 #define IDC_STATUS                      1001
-#define IDC_BUTTON_SCREENSHOT           1002
+#define IDC_BUTTON_SCREENSHOT          1002 
+#define IDC_BUTTON_TRIAL	1003
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED

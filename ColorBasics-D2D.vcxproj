@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="colours.cpp" />
+    <ClCompile Include="filter.cpp" />
     <ClCompile Include="image.cpp" />
   </ItemGroup>
   <ItemGroup>
