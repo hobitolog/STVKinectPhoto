@@ -6,16 +6,13 @@ Through this project it is possible to take pictures and save them by using the 
 
 In order to use the program, only the code and a properly connected Kinect sensor are needed.
 
-The final version of the project is contained in the "Kinect-final" zipped folder. Please use the .sln file from that folder.
+The final version of the project is contained in the "Kinect-final" zipped folder. Please use the .sln file from that folder, as in the separated branches there are the codes for developments of other functions that weren't successfully implemented (filtering images, sending pictures via mail).
 
 When clicking the "Screenshot" button, the photo is automatically saved in the "Pictures" folder as a bitmap file.
 
 # Built with
 -Visual Studio
 -Kinect SDK
-
-# notes
-In the separated branches are some developments of other functions that weren't successfully implemented (filtering images, sending pictures via mail)
 
 # Author
 Zeno Michelotto
